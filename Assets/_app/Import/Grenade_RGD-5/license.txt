@@ -1,0 +1,11 @@
+Model Information:
+* title:	Grenade RGD-5
+* source:	https://sketchfab.com/3d-models/grenade-rgd-5-33f05940d83847958b28d3d5e2c72f54
+* author:	dzubei777 (https://sketchfab.com/dzubei777)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Grenade RGD-5" (https://sketchfab.com/3d-models/grenade-rgd-5-33f05940d83847958b28d3d5e2c72f54) by dzubei777 (https://sketchfab.com/dzubei777) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
