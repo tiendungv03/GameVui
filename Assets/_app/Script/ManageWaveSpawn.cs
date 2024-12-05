@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ManageWaveSpawn
@@ -27,6 +28,13 @@ public class ManageWaveSpawn
     }
 
     public List<WaveSpawn> ListWaveSpawn() => waveList;
+
+    public int NumEnemyThisWay(int wave)
+    {
+        int numEnemy = 0;
+        numEnemy = waveList.Where(numThisWay => numThisWay.GetWaveID() == wave).Sum(numThisWay => numThisWay.GetSpawnCount());
+        return numEnemy;
+    }
 
     public void ShowWavesSpawns()
     {

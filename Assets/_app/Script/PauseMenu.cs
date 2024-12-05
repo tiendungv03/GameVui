@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = true;
         pauseMenu.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0f;
     }
 

@@ -18,6 +18,15 @@ public class Enemy : MonoBehaviour
     private float attackCooldown; // Thời gian chờ giữa các lần tấn công
     private string specialAbility;
 
+    private const int BEKILL = -1;
+
+    private EnemyRemainText enemyRemainText;
+
+    public void Start()
+    {
+        enemyRemainText = FindAnyObjectByType<EnemyRemainText>();
+    }
+
     //add status from database
     public void AddDataStatus(IDataReader readEnemyStatus)
     {
@@ -53,6 +62,16 @@ public class Enemy : MonoBehaviour
     public int GetSpeed() => speed;
     public float GetAttackRange() => attackRange;
     public float GetAttackCooldown() => attackCooldown;
+
+    public void BalanceHealth(int healthBalance)
+    {
+        if (health < 0)
+        {
+            Destroy(gameObject);
+            enemyRemainText.AddNumEnemyRemain(BEKILL);
+        }
+        else { health -= healthBalance; }
+    }
 
     public override string ToString()
     {
