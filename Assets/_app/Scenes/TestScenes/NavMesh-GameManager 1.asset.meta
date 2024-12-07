@@ -1,16 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_app/Scenes/TestScenes/NavMesh-Barn2_End_A 1.asset.meta
-guid: 5d936f91df79b184d9bd15cd4bb4718f
-=======
 <<<<<<<< Updated upstream:Assets/map/Flooded_Grounds/Scenes/PreAsembeld_BuildingsSettings.lighting.meta
-guid: 20ade13cf46fbbf4d882a7cb32000bbb
+guid: 4cad2172bc68d3d41957007c985327f3
 ========
 guid: 04ff6a3bbc472aa408b5da5e21bc0fbf
 >>>>>>>> Stashed changes:Assets/_app/Scenes/TestScenes/NavMesh-GameManager 1.asset.meta
->>>>>>> main:Assets/map/Flooded_Grounds/Scenes/PreAsembeld_BuildingsSettings.lighting.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 23800000
+  mainObjectFileID: 4890085278179872738
   userData: 
   assetBundleName: 
   assetBundleVariant: 

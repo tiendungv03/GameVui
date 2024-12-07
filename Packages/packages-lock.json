@@ -61,6 +61,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.multiplayer.center": {
       "version": "1.0.0",
       "depth": 0,
@@ -69,6 +70,8 @@
         "com.unity.modules.uielements": "1.0.0"
       }
     },
+=======
+>>>>>>> main
     "com.unity.performance.profile-analyzer": {
       "version": "1.2.2",
       "depth": 1,
@@ -113,6 +116,17 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
+=======
+    "com.unity.textmeshpro": {
+      "version": "3.0.6",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      }
+    },
+>>>>>>> main
     "com.unity.timeline": {
       "version": "1.8.7",
       "depth": 0,
