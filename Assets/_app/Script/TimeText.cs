@@ -1,0 +1,26 @@
+using TMPro;
+using UnityEngine;
+
+public class TimeText : MonoBehaviour
+{
+    public TextMeshProUGUI timeText;
+    public double time;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        time = 0;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (time > 0) 
+            time -= Time.deltaTime;
+        timeText.text = "Time: " + Mathf.Round((float)time);
+    }
+
+    public void SetTime(int time)
+    {
+        this.time = time;
+    }
+}

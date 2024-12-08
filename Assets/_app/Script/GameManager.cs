@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     public List<EnemyData> enemyTypes;
     public List<Transform> spawnPosRandom;
 
-    private int waveIndex;
     private string dbPath;
 
     private ManageData manageData;
@@ -44,6 +43,9 @@ public class GameManager : MonoBehaviour
     private ManageWave manageWave;
     private ManageWaveSpawn manageWaveSpawn;
     private SpawnEnemy spawnEnemy;
+    private WaveDisplay waveDisplay;
+    private TimeText timeText;
+    private EnemyRemainText enemyRemainText;
     // Start is called before the first frame update
     void Awake()
     {     
@@ -51,8 +53,13 @@ public class GameManager : MonoBehaviour
         manageData = new ManageData(dbPath);
         manageEnemy = new ManageEnemy(dbPath);
         manageWave = new ManageWave(dbPath);
+
         manageWaveSpawn = new ManageWaveSpawn(dbPath);
+
         spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
+        waveDisplay = FindAnyObjectByType<WaveDisplay>();
+        timeText = FindAnyObjectByType<TimeText>();
+        enemyRemainText = FindAnyObjectByType<EnemyRemainText>();
 
         manageData.OpenConnect();
         manageData.CreateDb();
@@ -87,7 +94,7 @@ public class GameManager : MonoBehaviour
         List<Enemy> enemies = manageEnemy.ListEnemy();
         List<WaveSpawn> waveSpawns = manageWaveSpawn.ListWaveSpawn();
             
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemyTypes.Count; i++)
         {
             List<WaveSpawn> spawnPerWave = new List<WaveSpawn>();
             spawnPerWave = waveSpawns.Where(spawn => spawn.GetEnemyID() == enemies[i].GetEnemyID()).ToList();
@@ -130,10 +137,24 @@ public class GameManager : MonoBehaviour
 
         foreach (Wave wave in waves)
         {
-            waveIndex = wave.GetWaveNumber();
-            Debug.Log(waveIndex);
+            int waveIndex = wave.GetWaveNumber();
+            int time = wave.GetDuration();
+            int numEnemyThisWay = manageWaveSpawn.NumEnemyThisWay(waveIndex);
+
+            SetUIText(waveIndex, time, numEnemyThisWay);
+
             StartCoroutine(SpawnOneWave(waveIndex));
-            yield return new WaitForSeconds(wave.GetDuration());
+            yield return new WaitForSeconds(time);
         }
+    }
+
+    private void SetUIText(int waveIndex, int time, int numEnemyThisWay)
+    {
+        if (waveDisplay != null)
+            waveDisplay.SetWaveText(waveIndex);
+        if (timeText != null)
+            timeText.SetTime(time);
+        if (enemyRemainText != null)
+            enemyRemainText.AddNumEnemyRemain(numEnemyThisWay);
     }
 }
