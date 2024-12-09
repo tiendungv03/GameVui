@@ -10,7 +10,7 @@ public class InteractObject : MonoBehaviour
 
     protected virtual void Awake()
     {
-        isPlayerInRange =false;
+        /*isPlayerInRange =false;
         var interactObj = GameObject.FindGameObjectWithTag("InteractText");
         if (interactObj == null)
         {
@@ -18,7 +18,7 @@ public class InteractObject : MonoBehaviour
         }
         else
             interactText = GameObject.FindGameObjectWithTag("InteractText").GetComponent<TextMeshProUGUI>();
-        ActiveInteractText(isPlayerInRange);
+        ActiveInteractText(isPlayerInRange);*/
     }
 
     private void OnTriggerEnter(Collider other)

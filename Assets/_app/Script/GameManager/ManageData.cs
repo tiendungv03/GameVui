@@ -86,13 +86,9 @@ public class ManageData
         insertTableDic.Add("EnemyStatus", new List<string>()
         {
             "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Zombie', 100, 10, 1.0, 1.5, 2, NULL)",
+            "VALUES ('Zombie', 100, 10, 3.0, 1, 2, 'Melee')",
             "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Goblin', 50, 5, 2.0, 1.5, 1, NULL)",
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Skeleton', 80, 8, 1.5, 2, 2,  NULL)",
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Vampire', 120, 12, 2.5, 5, 2.5, 'Flying')",
+            "VALUES ('Goblin', 50, 5, 3.0, 8, 1, 'Ranged')",
         });
 
         //Add command insert table EnemyStatus
