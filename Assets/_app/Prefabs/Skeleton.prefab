@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2822792550797040174}
   - component: {fileID: 5433957957114025940}
   - component: {fileID: -6349000109076411490}
-  - component: {fileID: -1620203519393971347}
   - component: {fileID: 5655271076343520885}
   m_Layer: 0
   m_Name: Skeleton
@@ -136,10 +135,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 367972128046968924}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 10
+  avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -172,23 +171,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1620203519393971347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367972128046968924}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba3ba15b2813264c8483895141284f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &5655271076343520885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d951bc54d9166458c130b5578f79cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   projectilePrefab: {fileID: 3472829490515236543, guid: f0b27e9aac2f8574ba39913222634914, type: 3}
   firePoint: {fileID: 7866964631333525600, guid: ac65158fc22d66241a1cc696c865f699, type: 3}
   minAttackDistance: 6
