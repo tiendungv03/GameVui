@@ -32,13 +32,13 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Hàm xử lý va chạm để không cho quái đẩy Player
-    void OnCollisionStay(Collision collision)
+/*    void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player")) // Nếu có va chạm với Player
         {
             transform.Translate(Vector3.zero); // Ngừng di chuyển quái khi va chạm với Player
         }
-    }
+    }*/
 
     public virtual void TakeInformation()
     {

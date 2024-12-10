@@ -31,6 +31,28 @@ public class GameManager : MonoBehaviour
                 Debug.Log(waveSpawn);
             }
         }
+
+        public void CheckComponent()
+        {
+            string nameComponent = enemyStatus.GetSpecialAbility();
+            switch (nameComponent)
+            {
+                case "Melee":
+                    HasComponent<MeleeEnemy>(enemyPrefab, nameComponent);
+                    break;
+                case "Ranged":
+                    HasComponent<RangedEnemy>(enemyPrefab, nameComponent);
+                    break;
+            }
+        }
+
+        public void HasComponent<T>(GameObject obj, string specialAbility) where T : Component
+        {
+            if (obj.GetComponent<T>() != null)
+            {
+                Debug.LogWarning("Ko co component dung voi special ability: " + specialAbility);
+            }
+        }
     }
 
     public List<EnemyData> enemyTypes;

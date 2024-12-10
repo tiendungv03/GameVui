@@ -62,8 +62,9 @@ public class Enemy : MonoBehaviour
     public int GetSpeed() => speed;
     public float GetAttackRange() => attackRange;
     public float GetAttackCooldown() => attackCooldown;
+    public string GetSpecialAbility() => specialAbility;
 
-    public void BalanceHealth(int healthBalance)
+    public void TakeDamage(int healthBalance)
     {
         if (health < 0)
         {
