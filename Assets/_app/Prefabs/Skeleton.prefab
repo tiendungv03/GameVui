@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3472829490515236543, guid: f0b27e9aac2f8574ba39913222634914, type: 3}
-  firePoint: {fileID: 7866964631333525600, guid: ac65158fc22d66241a1cc696c865f699, type: 3}
+  firePoint: {fileID: -8679921383154817045, guid: 18d21f2539e45634499a974e7f9e1339, type: 3}
   minAttackDistance: 6
   maxAttackDistance: 8
   minSafeDistance: 4

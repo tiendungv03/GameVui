@@ -14,14 +14,21 @@ public class EnemyRemainText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (numEnemyRemain > 0)
-        {
-            enemyRemainText.text = "Enemy: " + numEnemyRemain;
-        }
+        EnemyRemainUI(); 
     }
 
     public void AddNumEnemyRemain(int numEnemy)
     {
         numEnemyRemain += numEnemy;
+    }
+
+    public void EnemyRemainUI()
+    {
+        if(enemyRemainText == null) 
+            return;
+        if (numEnemyRemain > 0)
+        {
+            enemyRemainText.text = "Enemy: " + numEnemyRemain;
+        }
     }
 }

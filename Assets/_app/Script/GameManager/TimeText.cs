@@ -14,13 +14,20 @@ public class TimeText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time > 0) 
-            time -= Time.deltaTime;
-        timeText.text = "Time: " + Mathf.Round((float)time);
+        TimeUI();
     }
 
     public void SetTime(int time)
     {
         this.time = time;
+    }
+
+    public void TimeUI()
+    {
+        if (timeText == null)
+            return;
+        if (time > 0)
+            time -= Time.deltaTime;
+        timeText.text = "Time: " + Mathf.Round((float)time);
     }
 }

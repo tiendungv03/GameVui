@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        public void CheckComponent()
+        /*public void CheckComponent()
         {
             string nameComponent = enemyStatus.GetSpecialAbility();
             switch (nameComponent)
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.LogWarning("Ko co component dung voi special ability: " + specialAbility);
             }
-        }
+        }*/
     }
 
     public List<EnemyData> enemyTypes;
@@ -152,6 +152,11 @@ public class GameManager : MonoBehaviour
 
                 GameObject enemyObject = Instantiate(enemy.enemyPrefab, spawnPosRandom[randSpawn].position, spawnPosRandom[randSpawn].rotation);
                 Enemy enemyStatus = enemyObject.GetComponent<Enemy>();
+                if (enemyStatus == null)
+                {
+                    Debug.LogWarning("ko co script enemy trong prefab clone");
+                    break;
+                }
                 enemyStatus.SetEnemyStatus(enemy.GetEnemy());
 
                 yield return new WaitForSeconds(spawnInterval);
