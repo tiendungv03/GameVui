@@ -3,14 +3,12 @@ using UnityEngine.AI; // Sử dụng NavMesh để di chuyển quái
 
 public class MeleeEnemy : EnemyAI
 {
-    private AnimationCreep animationCreep;
-    // Hàm xử lý tấn công
+    private float NEARPLAYERMORE = 1.5f;
 
     public override void Start()
     {
         base.Start();
-        animationCreep = GetComponent<AnimationCreep>();
-        /*animationCreep.ChangeAnimation("Demon|Walk1");*/
+        navAgent.stoppingDistance = attackRange - NEARPLAYERMORE;
     }
 
     public override void Attack()
@@ -20,7 +18,10 @@ public class MeleeEnemy : EnemyAI
         PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
 
         if (playerHealth == null)
+        {
+            Debug.Log(playerHealth);
             return;
+        }
 
         playerHealth.TakeDamage(enemyStatus.GetDamage()); // Gây sát thương bằng lượng damage của quái
     }
@@ -35,14 +36,23 @@ public class MeleeEnemy : EnemyAI
             if (distance > enemyStatus.GetAttackRange())
             {
                 navAgent.SetDestination(target.position); // Di chuyển đến vị trí của Player
-                animationCreep.ChangeAnimation("Demon|Walk1");
+                animationCreep.ChangeAnimation("Walk");
             }
             else if (Time.time - lastAttackTime >= enemyStatus.GetAttackCooldown()) // Nếu quái đủ thời gian giữa các đợt tấn công
             {
-                animationCreep.ChangeAnimation("Demon|Punch1");
+                transform.LookAt(target);
+                animationCreep.ChangeAnimation("Punch");
                 Attack(); // Thực hiện tấn công
                 lastAttackTime = Time.time; // Cập nhật thời gian tấn công lần này
             }
         }
+    }
+
+    public void DealDamage()
+    {
+        transform.LookAt(target);
+        animationCreep.ChangeAnimation("Punch");
+        Attack(); // Thực hiện tấn công
+        lastAttackTime = Time.time; // Cập nhật thời gian tấn công lần này
     }
 }

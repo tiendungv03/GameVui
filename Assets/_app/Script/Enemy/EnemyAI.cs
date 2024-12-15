@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     protected Transform target; // Đối tượng Player (quái sẽ di chuyển về Player)
     protected NavMeshAgent navAgent; // Để quái di chuyển theo NavMesh
     protected Enemy enemyStatus;
+    protected AnimationCreep animationCreep;
 
     // Hàm gọi khi game bắt đầu
     public virtual void Start()
@@ -34,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemyStatus = gameObject.GetComponent<Enemy>();
         navAgent = GetComponent<NavMeshAgent>(); // Lấy NavMeshAgent từ quái    
+        animationCreep = GetComponent<AnimationCreep>();
         if (enemyStatus == null)
         {
             Debug.LogWarning("Ko co script enemy");
@@ -46,7 +48,13 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        attackRange = enemyStatus.GetAttackRange() - 1;
+        if (animationCreep == null)
+        {
+            Debug.LogWarning("ko co animation");
+            return;
+        }
+
+        attackRange = enemyStatus.GetAttackRange();
         navAgent.stoppingDistance = attackRange; // Đặt khoảng cách dừng khi quái đến gần Player
         navAgent.speed = enemyStatus.GetSpeed();
         target = GameObject.FindWithTag("Player").transform;
@@ -55,6 +63,13 @@ public class EnemyAI : MonoBehaviour
     public virtual void EnemyAction()
     {
 
+    }
+
+    // Gizmos để kiểm tra các khoảng cách trong Unity Editor (tùy chọn)
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange); // Vùng an toàn
     }
 }
 

@@ -19,12 +19,25 @@ public class Enemy : MonoBehaviour
     private string specialAbility;
 
     private const int BEKILLED = -1;
+    private const float BEFOREDESTROY = 5f;
 
     private EnemyRemainText enemyRemainText;
+    private AnimationCreep animationCreep;
 
     public void Start()
     {
         enemyRemainText = FindAnyObjectByType<EnemyRemainText>();
+        animationCreep = GetComponent<AnimationCreep>();
+
+        if (animationCreep == null)
+        {
+            Debug.LogWarning("ko co enemy text");
+        }
+
+        if (animationCreep == null)
+        {
+            Debug.LogWarning("ko co animation");
+        }
     }
 
     //add status from database
@@ -68,7 +81,8 @@ public class Enemy : MonoBehaviour
     {
         if (health < 0)
         {
-            Destroy(gameObject);
+            animationCreep.ChangeAnimation("Death");
+            Destroy(gameObject, BEFOREDESTROY);
             enemyRemainText.AddNumEnemyRemain(BEKILLED);
         }
         else { health -= healthBalance; }

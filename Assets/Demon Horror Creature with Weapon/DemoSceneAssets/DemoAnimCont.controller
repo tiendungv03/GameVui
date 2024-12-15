@@ -37,13 +37,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8819547128289480285}
-    m_Position: {x: -1730, y: -1200, z: 0}
+    m_Position: {x: -1710, y: -1410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2024956899172425831}
     m_Position: {x: -1730, y: -1150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5406021241023745067}
-    m_Position: {x: -380, y: -1200, z: 0}
+    m_Position: {x: -1000, y: -1410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4015775602482979850}
     m_Position: {x: -1060, y: -1200, z: 0}
@@ -67,7 +67,7 @@ AnimatorStateMachine:
     m_Position: {x: -1290, y: -1100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7688750449650022351}
-    m_Position: {x: -1290, y: -1150, z: 0}
+    m_Position: {x: -1240, y: -1410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5059992649267543909}
     m_Position: {x: -1290, y: -1200, z: 0}
@@ -79,7 +79,7 @@ AnimatorStateMachine:
     m_Position: {x: -1510, y: -1150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7662852991570609333}
-    m_Position: {x: -1510, y: -1200, z: 0}
+    m_Position: {x: -1470, y: -1350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6253482653540975246}
     m_Position: {x: -610, y: -1200, z: 0}
@@ -106,7 +106,7 @@ AnimatorStateMachine:
     m_Position: {x: -840, y: -1200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3692755630637599100}
-    m_Position: {x: -1520, y: -990, z: 0}
+    m_Position: {x: -1470, y: -1410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7587542770378926983}
     m_Position: {x: -1520, y: -940, z: 0}
@@ -115,9 +115,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -1940, y: -1150, z: 0}
-  m_EntryPosition: {x: -1940, y: -1200, z: 0}
-  m_ExitPosition: {x: -1940, y: -1090, z: 0}
+  m_AnyStatePosition: {x: -1940, y: -1350, z: 0}
+  m_EntryPosition: {x: -1940, y: -1410, z: 0}
+  m_ExitPosition: {x: -1940, y: -1290, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -8819547128289480285}
 --- !u!1102 &-7662852991570609333
@@ -127,7 +127,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon|Shoot2
+  m_Name: Shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -179,7 +179,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon|Death
+  m_Name: Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -499,12 +499,11 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon|Walk1
+  m_Name: Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 3443536485750644597}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -734,7 +733,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Demon|Punch2
+  m_Name: Punch
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

@@ -1,71 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : EnemyAI
 {
-    private float lastAttackTime = 0f;
-
-    public Transform target;
-    private NavMeshAgent navAgent;
-    private Enemy enemyStatus;
-
     public GameObject projectilePrefab; // Tham chiếu đến prefab đạn
     public Transform firePoint; // Tham chiếu đến GameObject khác đại diện cho vị trí bắn
 
-    public float minAttackDistance = 5f; // Khoảng cách tối thiểu để tấn công
-    public float maxAttackDistance = 8f; // Khoảng cách tối đa để tấn công
-    public float minSafeDistance = 3f; // Khoảng cách tối thiểu an toàn, nếu dưới thì quái sẽ tấn công
-
-    void Start()
-    {
-        enemyStatus = GetComponent<Enemy>();
-        navAgent = GetComponent<NavMeshAgent>();
-        navAgent.speed = enemyStatus.GetSpeed();
-        target = GameObject.FindWithTag("Player").transform;
-        navAgent.stoppingDistance = enemyStatus.GetAttackRange();
-    }
-
-    void Update()
-    {
-        if (target != null)
-        {
-            float distance = Vector3.Distance(target.position, transform.position); // Tính khoảng cách đến người chơi
-
-            // Nếu người chơi ở rất gần (0 - minSafeDistance), quái tấn công liên tục
-            if (distance < minSafeDistance)
-            {
-                navAgent.isStopped = true; // Dừng di chuyển để tập trung tấn công
-
-                // Đảm bảo không tấn công liên tục nếu chưa đủ thời gian hồi chiêu
-                if (Time.time - lastAttackTime >= enemyStatus.GetAttackCooldown())
-                {
-                    RangedAttack(); // Tấn công
-                    lastAttackTime = Time.time; // Cập nhật thời gian tấn công
-                }
-            }
-            // Nếu quái nằm trong khoảng cách tấn công và có thể nhìn thấy người chơi
-            else if (distance >= minAttackDistance && distance <= maxAttackDistance && CanSeePlayer())
-            {
-                navAgent.isStopped = true; // Dừng lại để tấn công
-
-                // Đảm bảo không tấn công liên tục
-                if (Time.time - lastAttackTime >= enemyStatus.GetAttackCooldown()) // Đủ thời gian hồi chiêu
-                {
-                    RangedAttack(); // Thực hiện tấn công
-                    lastAttackTime = Time.time; // Cập nhật thời gian tấn công
-                }
-            }
-            else
-            {
-                navAgent.isStopped = false; // Tiếp tục di chuyển nếu không tấn công
-                navAgent.SetDestination(target.position); // Quái di chuyển về phía người chơi
-            }
-        }
-    }
-
-    void RangedAttack()
+    public override void Attack()
     {
         if (projectilePrefab != null && firePoint != null)
         {
@@ -88,32 +32,32 @@ public class RangedEnemy : MonoBehaviour
         }
     }
 
-    bool CanSeePlayer()
+    public override void EnemyAction()
     {
-        Vector3 directionToPlayer = (target.position - transform.position).normalized; // Hướng tới người chơi
-        float distanceToPlayer = Vector3.Distance(transform.position, target.position); // Khoảng cách tới người chơi
-
-        Ray ray = new Ray(transform.position + Vector3.up * 1f, directionToPlayer); // Tạo ray từ vị trí của quái
-        RaycastHit hit;
-
-        // Raycast kiểm tra va chạm
-        if (Physics.Raycast(ray, out hit, distanceToPlayer))
+        if (target != null)
         {
-            // Nếu raycast trúng người chơi
-            if (hit.collider.CompareTag("Player"))
+            float distance = Vector3.Distance(target.position, transform.position); // Tính khoảng cách đến người chơi
+
+            // Nếu người chơi ở rất gần (0 - minSafeDistance), quái tấn công liên tục
+            if (distance < attackRange)
             {
-                return true;
+                navAgent.isStopped = true; // Dừng di chuyển để tập trung tấn công
+
+                // Đảm bảo không tấn công liên tục nếu chưa đủ thời gian hồi chiêu
+                if (Time.time - lastAttackTime >= enemyStatus.GetAttackCooldown())
+                {
+                    transform.LookAt(target);
+                    animationCreep.ChangeAnimation("Shoot");
+                    Attack(); // Tấn công
+                    lastAttackTime = Time.time; // Cập nhật thời gian tấn công
+                }
+            }
+            else
+            {
+                navAgent.isStopped = false; // Tiếp tục di chuyển nếu không tấn công
+                navAgent.SetDestination(target.position); // Quái di chuyển về phía người chơi
+                animationCreep.ChangeAnimation("Walk");
             }
         }
-        return false;
-    }
-
-    // Gizmos để kiểm tra các khoảng cách trong Unity Editor (tùy chọn)
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minSafeDistance); // Vùng an toàn
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, maxAttackDistance); // Vùng tấn công
     }
 }
