@@ -7,8 +7,8 @@ public class AmmoDisplay : MonoBehaviour
 {
     public int maxAmmoInManagazine = 30; // Số lượng đạn tối đa trong băng đạn
     public int ammoInManagazine; // Số lượng đạn hiện tại
-    public int currentAmmo = 100; // số lượng đạn hiện tại trong túi
-    public int maxCurrentAmmo = 200;
+    public int currentAmmo = 50; // số lượng đạn hiện tại trong túi
+    public int maxCurrentAmmo = 300;
     public TextMeshProUGUI ammoText; // Text Object để hiển thị số lượng đạn
     private float fireRate = 0.2f; // Tốc độ bắn (giây giữa các lần bắn)
     private float nextFireTime = 0f; // Thời gian tiếp theo có thể bắn
