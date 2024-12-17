@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
-using UnityEngine.UI;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance { get; set; }
     public Weapon hovereWeapon = null;
-    public AmmoBox hoveredAmmoBox = null;
+
     private void Awake()
     {
         // Singleton Pattern để đảm bảo chỉ có một InteractionManager
@@ -32,7 +30,7 @@ public class InteractionManager : MonoBehaviour
             GameObject objectHitByRaycast = hit.transform?.gameObject;
 
             // Kiểm tra xem vật thể có phải là vũ khí không
-            if (objectHitByRaycast.GetComponent<Weapon>() && objectHitByRaycast.GetComponent<Weapon>().isActiveWeapon == false)
+            if ( objectHitByRaycast.GetComponent<Weapon>() && objectHitByRaycast.GetComponent<Weapon>().isActiveWeapon ==false)
             {
                 hovereWeapon = objectHitByRaycast.GetComponent<Weapon>();
 
@@ -62,32 +60,6 @@ public class InteractionManager : MonoBehaviour
                     hovereWeapon = null;
                 }
             }
-            
-            
-            //AmmoBox
-            if (objectHitByRaycast.GetComponent < AmmoBox>())
-            {
-                hoveredAmmoBox = objectHitByRaycast.gameObject.GetComponent<AmmoBox>();
-                hoveredAmmoBox.GetComponent<Outline>().enabled = true;
-
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    if (hoveredAmmoBox != null && WeaponManger.Instance != null)
-                    {
-                        WeaponManger.Instance.PickupAmmo(hoveredAmmoBox);
-                    }
-                    Destroy(objectHitByRaycast.gameObject);
-
-                }
-            }
-            else
-            {
-                if (hoveredAmmoBox)
-                {
-                    hoveredAmmoBox.GetComponent<Outline>().enabled = false;
-                }
-            }
-
         }
         else
         {
@@ -102,7 +74,5 @@ public class InteractionManager : MonoBehaviour
                 hovereWeapon = null;
             }
         }
-
-     
     }
 }
