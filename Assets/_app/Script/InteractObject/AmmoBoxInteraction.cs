@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class AmmoBoxInteraction : InteractObject
 {
     public int ammoSupply = 50; // Số lượng đạn thêm vào khi tương tác
-    public TextMeshProUGUI ammoText; // Tham chiếu tới Text Object để hiển thị thông báo
+    public Weapon weapon; // Tham chiếu tới Text Object để hiển thị thông báo
 
     protected override void Awake()
     {
         base.Awake();
+        
     }
 
     private void Start()

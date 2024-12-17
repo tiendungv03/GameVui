@@ -176,6 +176,8 @@ public class WeaponManager : MonoBehaviour
     // Các đối tượng cần nhặt lại
     private GameObject droppedWeapon;
 
+    public static object Instance { get; internal set; }
+
     void Start()
     {
         // Khởi tạo mảng weaponNames dựa trên tên của các vũ khí

@@ -5173,15 +5173,17 @@ GameObject:
   - component: {fileID: 7697185781900632278}
   - component: {fileID: 2875132080982606295}
   - component: {fileID: 7265749636384499152}
-  - component: {fileID: 7224138750092180557}
   - component: {fileID: 3040324916247491832}
+  - component: {fileID: 4056005860447116642}
+  - component: {fileID: 7028148028153112288}
+  - component: {fileID: 433957141964266240}
   m_Layer: 0
   m_Name: M4a4
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7697185781900632278
 Transform:
   m_ObjectHideFlags: 0
@@ -5213,24 +5215,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
+  isActiveWeapon: 0
   isShooting: 0
   readyToShoot: 0
-  shootingDelay: 2
+  shootingDelay: 1.97
   currentFireMode: 2
   bulletPrefab: {fileID: 6375286154434006256, guid: 39fef9f04f765404e98c8c7e3aaef28e, type: 3}
   bulletSpawn: {fileID: 5260085594630150846}
-  bulletVelocity: 500
+  bulletVelocity: 550
   bulletPrefabLifeTime: 3
   burstCount: 3
   burstFireRate: 0.1
   autoFireRate: 0.1
   muzzleEffect: {fileID: 2327030102992632465}
   reloadTime: 1.5
-  magazineSize: 36
+  currentAmmo: 150
+  maxCurrentAmmo: 300
+  magazineSize: 30
   bulletLeft: 0
   isReloading: 0
   notificationText: {fileID: 0}
-  spawnPosition: {x: 0.63558, y: -0.03, z: 2.463419}
+  spawnPosition: {x: 0.63558, y: 0.4, z: 2.19}
   spawnRotation: {x: 0, y: 90, z: 0}
 --- !u!95 &7265749636384499152
 Animator:
@@ -5254,18 +5259,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7224138750092180557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6315060643190561794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0409662ec3d05fe4cbc58145ebe99131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &3040324916247491832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5287,6 +5280,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4056005860447116642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315060643190561794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca264200a77a76e4586cc669274d4561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7028148028153112288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315060643190561794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &433957141964266240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315060643190561794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca264200a77a76e4586cc669274d4561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6878382935214310202
 GameObject:
   m_ObjectHideFlags: 0

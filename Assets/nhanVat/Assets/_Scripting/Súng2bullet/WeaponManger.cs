@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class WeaponManger : MonoBehaviour
     public List<GameObject> weaponSlots;
     public GameObject activeWeaponSlot;
 
+    [Header(" Ammo")]
+    public int totalRifleAmmo = 0;
+    public int totalPistolAmmo = 0;
 
     private void Awake()
     {
@@ -131,5 +135,33 @@ public class WeaponManger : MonoBehaviour
             weapon.isActiveWeapon = true; // Bật trạng thái vũ khí
         }
     }
+
+    internal void PickupAmmo(AmmoBox ammo)
+    {
+        switch (ammo.ammoType)
+        {
+            case AmmoBox.AmmoType.PistolAmmo:
+                totalPistolAmmo += ammo.ammoAmount;
+                break;
+
+            case AmmoBox.AmmoType.RifleAmmo:
+                totalRifleAmmo += ammo.ammoAmount;
+                break;
+        }
+    }
+
+
+    //public void DecreaseTotalAmmo(int amount, string ammoType)
+    //{
+    //    switch (ammoType)
+    //    {
+    //        case "Pistol":
+    //            totalPistolAmmo -= amount;
+    //            break;
+    //        case "Rifle":
+    //            totalRifleAmmo -= amount;
+    //            break;
+    //    }
+    //}
 
 }
