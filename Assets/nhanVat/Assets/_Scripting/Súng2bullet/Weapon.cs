@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
 
     public bool isActiveWeapon;
 
-    public bool isShooting, readyToShoot;
+    public bool readyToShoot;
     public float shootingDelay = 2f;
 
     public enum FireMode { Single, Burst, Auto }
@@ -25,6 +25,8 @@ public class Weapon : MonoBehaviour
 
     public GameObject muzzleEffect;
     public float reloadTime;
+    public int currentAmmo = 150; // số lượng đạn hiện tại trong túi
+    public int maxCurrentAmmo = 300;
     public int magazineSize, bulletLeft;
     public bool isReloading;
 
@@ -58,6 +60,7 @@ public class Weapon : MonoBehaviour
             {
                 if (bulletLeft > 0)
                 {
+                    isFiring = true;
                     if (currentFireMode == FireMode.Single)
                     {
                         FireSingleShot();
@@ -68,7 +71,7 @@ public class Weapon : MonoBehaviour
                     }
                     else if (currentFireMode == FireMode.Auto)
                     {
-                        isFiring = true;
+
                         StartCoroutine(AutoFire());
                     }
                 }
@@ -94,14 +97,21 @@ public class Weapon : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.R) && bulletLeft < magazineSize && !isReloading)
-                Reload();
+            if (Input.GetKeyDown(KeyCode.R) && bulletLeft < magazineSize)
+            {
+                if (!isReloading && !isFiring)
+                {
+
+                    Debug.LogWarning("qdjhabjahfis");
+                    StartCoroutine(Reload()); // Bắt đầu Coroutine nạp đạn
+                }
+            }
 
             if (readyToShoot && !isFiring && !isReloading && bulletLeft <= 0)
                 ShowNotification("Press R to Reload!");
 
             if (AmmoManager.Instance.ammoDisplay != null)
-                AmmoManager.Instance.ammoDisplay.text = $"{bulletLeft} / {magazineSize}";
+                AmmoManager.Instance.ammoDisplay.text = $"{bulletLeft} / {currentAmmo}";
         }
     }
 
@@ -127,13 +137,26 @@ public class Weapon : MonoBehaviour
             HandleEmptyMagazine();
     }
 
-    private void Reload()
+    IEnumerator Reload()
     {
+        isReloading = true; // Đặt trạng thái đang nạp đạn
         SoundManager.Instance.reloadingSound.Play();
-        isReloading = true;
-        SetAnimatorState("Reload");
-        ShowNotification("Reloading...");
-        Invoke("ReloadComplete", reloadTime);
+        yield return new WaitForSeconds(reloadTime); // Chờ thời gian nạp đạn
+        Debug.Log("Reloading...");
+
+        if (bulletLeft + currentAmmo >= magazineSize)
+        {
+            currentAmmo = currentAmmo + bulletLeft - magazineSize;
+            bulletLeft = magazineSize; // Nạp lại đạn
+        }
+        else
+        {
+            bulletLeft += currentAmmo;
+            currentAmmo = 0;
+        }
+
+        isReloading = false; // Hoàn tất nạp đạn
+        Debug.Log("Reload complete!");
     }
 
     private void ReloadComplete()
@@ -229,5 +252,3 @@ public class Weapon : MonoBehaviour
         }
     }
 }
-    
-  
