@@ -45,7 +45,7 @@ public class ManageData
             //Add command create table EnemyStatus
             createTableDic.Add("EnemyStatus", 
                     "CREATE TABLE IF NOT EXISTS EnemyStatus (" +
-                    "EnemyID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "EnemyID INTEGER PRIMARY KEY NOT NULL," +
                     "EnemyName varchar(20) NOT NULL," +
                     "Health int NOT NULL," +
                     "Damage int NOT NULL," +
@@ -85,14 +85,14 @@ public class ManageData
         //Add command insert table EnemyStatus
         insertTableDic.Add("EnemyStatus", new List<string>()
         {
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Zombie', 100, 2, 3.0, 3.0, 3, 'Melee')",
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Goblin', 75, 3, 3.0, 8, 1, 'Ranged')",
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Vampire', 50, 10, 3.0, 3, 1, 'Explosion')",
-            "INSERT INTO EnemyStatus (EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
-            "VALUES ('Speeder', 50, 2, 6.0, 3, 1, 'Melee')",
+            "INSERT INTO EnemyStatus (EnemyID, EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
+            "VALUES (1, 'Melee', 300, 2, 5, 4, 2, 'Melee')",
+            "INSERT INTO EnemyStatus (EnemyID, EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
+            "VALUES (2, 'Ranged', 150, 2, 5, 15, 1, 'Ranged')",
+            "INSERT INTO EnemyStatus (EnemyID, EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
+            "VALUES (3, 'Speeder', 150, 3, 10, 4, 0.5, 'Melee')",
+            "INSERT INTO EnemyStatus (EnemyID, EnemyName, Health, Damage, Speed, AttackRange, AttackCooldown, SpecialAbility) " +
+            "VALUES (4, 'Mutant', 600, 5, 5, 5, 3, 'Mutant')",
         });
 
         //Add command insert table EnemyStatus
@@ -103,22 +103,49 @@ public class ManageData
             "INSERT INTO Waves (WaveNumber, Duration) " +
             "VALUES (2, 90)",
             "INSERT INTO Waves (WaveNumber, Duration) " +
-            "VALUES (3, 120)",
+            "VALUES (3, 180)",
+            "INSERT INTO Waves (WaveNumber, Duration) " +
+            "VALUES (4, 180)",
+            "INSERT INTO Waves (WaveNumber, Duration) " +
+            "VALUES (5, 0)",
         });
 
         //Add command insert table WaveSpawns
         insertTableDic.Add("WaveSpawns", new List<string>()
         {
+            //wave 1
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
-            "VALUES (1, 1, 5, 10)",
+            "VALUES (1, 1, 30, 0.5)",
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
-            "VALUES (1, 2, 3, 15)",
+            "VALUES (1, 2, 15, 0.5)",
+
+            //wave 2
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
-            "VALUES (1, 3, 3, 15)",
+            "VALUES (2, 1, 40, 0.25)",
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
-            "VALUES (1, 4, 4, 15)",
+            "VALUES (2, 3, 20, 0.5)",
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
-            "VALUES (2, 3, 10, 8)",
+            "VALUES (2, 2, 15, 0.5)",
+
+            //wave 3
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (3, 3, 60, 0.5)",
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (3, 2, 30, 0.5)",
+
+            //wave 4
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (4, 1, 60, 0.25)",
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (4, 3, 30, 0.5)",
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (4, 2, 20, 0.5)",
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (4, 4, 10, 1)",
+            
+            //wave 5
+            "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
+            "VALUES (4, 4, 150, 1)",
         });
 
         InsertTable(insertTableDic);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HealingBox
   - Ground
+  - Target
   layers:
   - Default
   - TransparentFX

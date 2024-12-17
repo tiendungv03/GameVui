@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 712975370303710498}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 7141792245680897467}
   m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,10 +295,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6836466990813169765}
   - component: {fileID: 2206385049087823102}
-  - component: {fileID: 9130545110129774773}
-  - component: {fileID: 990248036842329890}
+  - component: {fileID: 4768432190262308337}
+  - component: {fileID: 6125271993489823690}
+  - component: {fileID: 9081732178261369199}
+  - component: {fileID: 2324242176047533345}
   m_Layer: 0
-  m_Name: First Person Player
+  m_Name: First Person Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +316,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.23, z: 0}
-  m_LocalScale: {x: 1.1556, y: 1.8004247, z: 1.2135078}
+  m_LocalScale: {x: 0.42017612, y: 0.6546344, z: 0.4412314}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2822790516893247492}
@@ -348,7 +350,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9130545110129774773
+--- !u!114 &4768432190262308337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,13 +359,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5881910037233501434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e35f0141488364489264ec4f902572, type: 3}
+  m_Script: {fileID: 11500000, guid: a85d532ce9fd1f440aca5a8d4c325b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 100
   topCamp: -90
   bottommClamp: 90
---- !u!114 &990248036842329890
+--- !u!114 &6125271993489823690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,17 +374,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 5881910037233501434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0f62ceab2f76849a4e884d26556f8f, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b716ee000ec1e4db142a49d45d8cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
   gravity: -19.62
   jumpHeight: 3
-  groundCheck: {fileID: 7141792245680897467}
+  groundCheck: {fileID: 0}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
+--- !u!114 &9081732178261369199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881910037233501434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97062d8cb37f32f4db65e05c4cd7bdfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 2324242176047533345}
+  healthText: {fileID: 0}
+--- !u!114 &2324242176047533345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881910037233501434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377f416f57a6f94cab27a13d31f29ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!1 &5894683211166517879
 GameObject:
   m_ObjectHideFlags: 0
