@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     void CreateBulletImpactEffect(Collision objectWeHit)
     {
         ContactPoint contact = objectWeHit.contacts[0];

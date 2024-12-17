@@ -28,7 +28,7 @@ public class PlayerHealing : InteractObject
             /*Debug.LogWarning("ko co thong tin mau cua nguoi choi");*/
             return;
         }
-        if (isPlayerInRange && Input.GetKeyDown(interact))
+        if (isPlayerInRange && Input.GetKeyDown(interact) && playerHealth.currentHealth < playerHealth.maxHealth)
         {
             playerHealth.StartHealing(healAmount, healDuration);
             Destroy(gameObject);

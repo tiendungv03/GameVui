@@ -96,6 +96,8 @@ GameObject:
   m_Component:
   - component: {fileID: 457534}
   - component: {fileID: 9536038}
+  - component: {fileID: 2670810226933687539}
+  - component: {fileID: 2263300545357212587}
   m_Layer: 0
   m_Name: pbr_box_med
   m_TagString: Untagged
@@ -142,6 +144,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &2670810226933687539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &2263300545357212587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7b1c5404416fe438c122b7a7735e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 100
+  healDuration: 10
+  playerHealth: {fileID: 0}
 --- !u!1 &163350
 GameObject:
   m_ObjectHideFlags: 0
