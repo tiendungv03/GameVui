@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_app/Scenes/MainMenu.unity
     guid: d5c9ee57091717041a7d2b7f5e7c39b3
+  - enabled: 1
+    path: Assets/_app/Scenes/MapDemo.unity
+    guid: 130de191e9bf7de41a659f68e5741ed0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {     
-        dbPath = "Data Source=Assets/Database/RageFire.db";
+        dbPath = "Data Source=Assets/_app/Database/RageFire.db";
         manageData = new ManageData(dbPath);
         manageEnemy = new ManageEnemy(dbPath);
         manageWave = new ManageWave(dbPath);
