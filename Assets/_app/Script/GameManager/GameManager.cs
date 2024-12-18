@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -53,8 +54,8 @@ public class GameManager : MonoBehaviour
     private WinLostMenu winLostMenu;
     // Start is called before the first frame update
     void Awake()
-    {     
-        dbPath = "Data Source=Assets/_app/Database/RageFire.db";
+    {
+        dbPath = "URI=file:" + Path.Combine(Application.persistentDataPath, "RageFire.db");
         manageData = new ManageData(dbPath);
         manageEnemy = new ManageEnemy(dbPath);
         manageWave = new ManageWave(dbPath);
