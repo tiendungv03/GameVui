@@ -26,9 +26,11 @@ public class EnemyRemainText : MonoBehaviour
     {
         if(enemyRemainText == null) 
             return;
-        if (numEnemyRemain > 0)
+        if (numEnemyRemain >= 0)
         {
             enemyRemainText.text = "Enemy: " + numEnemyRemain;
         }
     }
+
+    public int NumEnemyRemain() { return numEnemyRemain; }
 }

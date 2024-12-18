@@ -5636,9 +5636,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7140731757618606193}
   - component: {fileID: 6905031960475011460}
-  - component: {fileID: 7684447787734443793}
   - component: {fileID: 5273130177022546557}
   - component: {fileID: -5059010144194362133}
+  - component: {fileID: 5445643667946165427}
+  - component: {fileID: 4858117730472393085}
   m_Layer: 0
   m_Name: sung_ne
   m_TagString: Untagged
@@ -5687,37 +5688,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  isShooting: 0
+  isActiveWeapon: 0
   readyToShoot: 0
-  isEquipped: 0
   shootingDelay: 2
   currentFireMode: 2
   bulletPrefab: {fileID: 6375286154434006256, guid: 39fef9f04f765404e98c8c7e3aaef28e, type: 3}
   bulletSpawn: {fileID: 8523230113210911345}
-  bulletVelocity: 500
+  bulletVelocity: 60
   bulletPrefabLifeTime: 3
   burstCount: 3
   burstFireRate: 0.1
   autoFireRate: 0.1
   muzzleEffect: {fileID: 830314702084085521}
   reloadTime: 1.5
-  magazineSize: 36
+  currentAmmo: 150
+  maxCurrentAmmo: 300
+  magazineSize: 20
   bulletLeft: 0
   isReloading: 0
   notificationText: {fileID: 0}
-  weaponModel: {fileID: 0}
---- !u!114 &7684447787734443793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3132166662434014345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0409662ec3d05fe4cbc58145ebe99131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  spawnPosition: {x: 0.29, y: -0.5, z: 2.463419}
+  spawnRotation: {x: 0, y: 90, z: 0}
 --- !u!95 &5273130177022546557
 Animator:
   serializedVersion: 7
@@ -5726,7 +5717,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3132166662434014345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f5832236bd2469141b372096517654af, type: 2}
   m_CullingMode: 0
@@ -5755,12 +5746,42 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!114 &5445643667946165427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132166662434014345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca264200a77a76e4586cc669274d4561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4858117730472393085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132166662434014345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3449579392859746481
 GameObject:
   m_ObjectHideFlags: 0

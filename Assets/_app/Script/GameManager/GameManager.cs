@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     private WaveDisplay waveDisplay;
     private TimeText timeText;
     private EnemyRemainText enemyRemainText;
+    private WinLostMenu winLostMenu;
     // Start is called before the first frame update
     void Awake()
     {     
@@ -53,13 +54,13 @@ public class GameManager : MonoBehaviour
         manageData = new ManageData(dbPath);
         manageEnemy = new ManageEnemy(dbPath);
         manageWave = new ManageWave(dbPath);
-
         manageWaveSpawn = new ManageWaveSpawn(dbPath);
 
         spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
         waveDisplay = FindAnyObjectByType<WaveDisplay>();
         timeText = FindAnyObjectByType<TimeText>();
         enemyRemainText = FindAnyObjectByType<EnemyRemainText>();
+        winLostMenu = FindAnyObjectByType<WinLostMenu>();
 
         manageData.OpenConnect();
         manageData.CreateDb();
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
         manageWaveSpawn.GetWaveSpawns();
         manageWaveSpawn.ShowWavesSpawns();
 
+        winLostMenu.SetMaxWave(manageWave.GetAmountWave());
         TransferData();
     }
 
@@ -161,10 +163,10 @@ public class GameManager : MonoBehaviour
 
     private void SetUIText(int waveIndex, int time, int numEnemyThisWay)
     {
-        if (waveDisplay != null)
-            waveDisplay.SetWaveText(waveIndex);
         if (timeText != null)
             timeText.SetTime(time);
+        if (waveDisplay != null)
+            waveDisplay.SetWaveText(waveIndex);
         if (enemyRemainText != null)
             enemyRemainText.AddNumEnemyRemain(numEnemyThisWay);
     }

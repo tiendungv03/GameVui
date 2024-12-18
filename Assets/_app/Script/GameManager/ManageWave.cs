@@ -33,4 +33,5 @@ public class ManageWave
     }
 
     public List<Wave> GetListWave() => waveList;
+    public int GetAmountWave() => waveList.Count;
 }

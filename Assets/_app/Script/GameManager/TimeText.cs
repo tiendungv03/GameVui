@@ -30,4 +30,6 @@ public class TimeText : MonoBehaviour
             time -= Time.deltaTime;
         timeText.text = "Time: " + Mathf.Round((float)time);
     }
+
+    public double GetTime() => time;
 }

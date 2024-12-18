@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private int damage;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Target"))
+        if (collision.gameObject.CompareTag("Target"))
         {
-            print("hit" +  collision.gameObject.name + "!");
+            Debug.LogWarning("hit" + collision.gameObject.name + "!");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             CreateBulletImpactEffect(collision);
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("hit" + other.gameObject.name + "!");
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
+
             Destroy(gameObject);
         }
     }
@@ -23,5 +38,10 @@ public class Bullet : MonoBehaviour
             Quaternion.LookRotation(contact.normal)
             );
         hole.transform.SetParent(objectWeHit.gameObject.transform);
+    }
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 }

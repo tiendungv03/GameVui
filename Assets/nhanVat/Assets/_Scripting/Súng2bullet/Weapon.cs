@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public Camera playerCamera;
 
     public bool isActiveWeapon;
-
+    public int damage;
     public bool readyToShoot;
     public float shootingDelay = 2f;
 
@@ -131,6 +131,7 @@ public class Weapon : MonoBehaviour
         Vector3 shootingDirection = CalculateDirectionAndSpread();
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Bullet>().SetDamage(damage);
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifeTime));
 
         if (bulletLeft <= 0)
