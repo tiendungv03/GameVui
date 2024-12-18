@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     private ManageWave manageWave;
     private ManageWaveSpawn manageWaveSpawn;
     private ManagePlayer managePlayer;
+    private ManageWeapon manageWeapon;
 
     private SpawnEnemy spawnEnemy;
     private WaveDisplay waveDisplay;
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
         manageWave = new ManageWave(dbPath);
         manageWaveSpawn = new ManageWaveSpawn(dbPath);
         managePlayer = new ManagePlayer(dbPath);
+        manageWeapon = new ManageWeapon(dbPath);
 
         spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
         waveDisplay = FindAnyObjectByType<WaveDisplay>();
@@ -83,9 +85,13 @@ public class GameManager : MonoBehaviour
         managePlayer.GetPlayerStatus();
         managePlayer.ShowPlayerStatus();
 
+        manageWeapon.GetWeaponStatus();
+        manageWeapon.ShowWeaponStatus();
+
         winLostMenu.SetMaxWave(manageWave.GetAmountWave());
         TransferData();
         TransferToPlayer();
+        TransferToGunInGame();
     }
 
     public void Start()
@@ -197,5 +203,14 @@ public class GameManager : MonoBehaviour
 
         playerHealth.maxHealth = health;
         playerController.speed = speed;
+    }
+
+    private void TransferToGunInGame()
+    {
+        List<Weapon> weapons = manageWeapon.Weapons();
+        foreach (Weapon weapon in weapons)
+        {
+            GameObject.Find(weapon.GunName).GetComponent<Weapon>().SetWeapon(weapon);
+        }
     }
 }

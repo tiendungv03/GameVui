@@ -82,6 +82,10 @@ public class Enemy : MonoBehaviour
         if (health < 0)
         {
             animationCreep.ChangeAnimation("Death");
+            EnemyAI enemyAI = gameObject.GetComponent<EnemyAI>();
+
+            if (enemyAI != null)
+                enemyAI.gameObject.SetActive(false);
             Destroy(gameObject, BEFOREDESTROY);
             enemyRemainText.AddNumEnemyRemain(BEKILLED);
         }

@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Data;
 using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public string GunName;
     public Camera playerCamera;
 
     public bool isActiveWeapon;
@@ -240,8 +243,8 @@ public class Weapon : MonoBehaviour
     {
         Vector3 direction = bulletSpawn.forward;
         float spread = 0.05f;
-        direction.x += Random.Range(-spread, spread);
-        direction.y += Random.Range(-spread, spread);
+        direction.x += UnityEngine.Random.Range(-spread, spread);
+        direction.y += UnityEngine.Random.Range(-spread, spread);
         return direction.normalized;
     }
 
@@ -251,5 +254,44 @@ public class Weapon : MonoBehaviour
         {
             animator.Play(state);
         }
+    }
+
+    public void AddDataStatus(IDataReader readEnemyStatus)
+    {
+        GunName = Convert.ToString(readEnemyStatus["GunName"]);
+        damage = Convert.ToInt32(readEnemyStatus["damage"]);
+        burstCount = Convert.ToInt32(readEnemyStatus["burstCount"]);
+        burstFireRate = (float)Convert.ToDouble(readEnemyStatus["burstFireRate"]);
+        autoFireRate = (float)Convert.ToDouble(readEnemyStatus["autoFireRate"]);
+        reloadTime = (float)Convert.ToDouble(readEnemyStatus["reloadTime"]);
+        currentAmmo = Convert.ToInt32(readEnemyStatus["currentAmmo"]);
+        maxCurrentAmmo = Convert.ToInt32(readEnemyStatus["maxCurrentAmmo"]);
+        magazineSize = Convert.ToInt32(readEnemyStatus["magazineSize"]);
+    }
+
+    public override string ToString()
+    {
+        return "GunName: " + GunName +
+                ", Damage: " + damage +
+                ", burstCount: " + burstCount +
+                ", burstFireRate: " + burstFireRate +
+                ", autoFireRate: " + autoFireRate +
+                ", reloadTime: " + reloadTime +
+                ", currentAmmo: " + currentAmmo +
+                ", maxCurrentAmmo: " + maxCurrentAmmo +
+                ", magazineSize: " + magazineSize;
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        GunName = weapon.GunName;
+        damage = weapon.damage;
+        burstCount = weapon.burstCount;
+        burstFireRate = weapon.burstFireRate;
+        autoFireRate = weapon.autoFireRate;
+        reloadTime = weapon.reloadTime;
+        currentAmmo = weapon.currentAmmo;
+        maxCurrentAmmo = weapon.maxCurrentAmmo;
+        magazineSize = weapon.magazineSize;
     }
 }
