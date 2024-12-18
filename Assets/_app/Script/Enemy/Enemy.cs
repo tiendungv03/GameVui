@@ -5,7 +5,6 @@ using System.Data;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Enemy : MonoBehaviour
 {
