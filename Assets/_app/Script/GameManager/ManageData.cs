@@ -79,6 +79,20 @@ public class ManageData
                     "Health int NOT NULL," +
                     "Speed float NOT NULL);");
 
+            //Add command create table Gun
+            createTableDic.Add("Gun",
+                    "CREATE TABLE IF NOT EXISTS Gun (" +
+                    "GunID INTEGER PRIMARY KEY NOT NULL," +
+                    "GunName varchar(20) NOT NULL," +
+                    "Damage int NOT NULL," +
+                    "BurstCount float NOT NULL," +
+                    "BurstFireRate float NOT NULL," +
+                    "AutoFireRate float NOT NULL," +
+                    "ReloadTime float NOT NULL," +
+                    "CurrentAmmo int NOT NULL," +
+                    "MaxCurrentAmmo int NOT NULL," +
+                    "MagazineSize int NOT NULL);");
+
             CreateTable(createTableDic);    
         }
     }
@@ -160,6 +174,14 @@ public class ManageData
         {
             "INSERT INTO Player (Health, Speed) " +
             "VALUES (100, 7.5)",
+        });
+
+        insertTableDic.Add("Gun", new List<string>()
+        {
+            "INSERT INTO Gun (GunName, Damage, BurstCount, BurstFireRate, AutoFireRate, ReloadTime, CurrentAmmo, MaxCurrentAmmo, MagazineSize) " +
+            "VALUES ('M4a4', 75, 3, 0.1, 0.1, 1.5, 300, 600, 30)",
+            "INSERT INTO Gun (GunName, Damage, BurstCount, BurstFireRate, AutoFireRate, ReloadTime, CurrentAmmo, MaxCurrentAmmo, MagazineSize) " +
+            "VALUES ('sung_ne', 50, 10, 0.1, 0.025, 4.5, 1000, 2000, 200)",
         });
 
         InsertTable(insertTableDic);

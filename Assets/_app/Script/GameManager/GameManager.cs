@@ -42,9 +42,12 @@ public class GameManager : MonoBehaviour
     private ManageEnemy manageEnemy;
     private ManageWave manageWave;
     private ManageWaveSpawn manageWaveSpawn;
+    private ManagePlayer managePlayer;
+
     private SpawnEnemy spawnEnemy;
     private WaveDisplay waveDisplay;
     private TimeText timeText;
+
     private EnemyRemainText enemyRemainText;
     private WinLostMenu winLostMenu;
     // Start is called before the first frame update
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         manageEnemy = new ManageEnemy(dbPath);
         manageWave = new ManageWave(dbPath);
         manageWaveSpawn = new ManageWaveSpawn(dbPath);
+        managePlayer = new ManagePlayer(dbPath);
 
         spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
         waveDisplay = FindAnyObjectByType<WaveDisplay>();
@@ -76,8 +80,12 @@ public class GameManager : MonoBehaviour
         manageWaveSpawn.GetWaveSpawns();
         manageWaveSpawn.ShowWavesSpawns();
 
+        managePlayer.GetPlayerStatus();
+        managePlayer.ShowPlayerStatus();
+
         winLostMenu.SetMaxWave(manageWave.GetAmountWave());
         TransferData();
+        TransferToPlayer();
     }
 
     public void Start()
@@ -169,5 +177,25 @@ public class GameManager : MonoBehaviour
             waveDisplay.SetWaveText(waveIndex);
         if (enemyRemainText != null)
             enemyRemainText.AddNumEnemyRemain(numEnemyThisWay);
+    }
+
+    private void TransferToPlayer()
+    {
+        int health = managePlayer.FirstPlayer().Health();
+        float speed = managePlayer.FirstPlayer().Speed();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogError("ko co player");
+            return;
+        }
+
+        PlayerMovement playerController = player.GetComponent<PlayerMovement>();
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+        playerHealth.maxHealth = health;
+        playerController.speed = speed;
     }
 }
