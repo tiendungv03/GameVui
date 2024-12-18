@@ -72,6 +72,13 @@ public class ManageData
                     "CONSTRAINT FK_Enemies FOREIGN KEY (EnemyID) REFERENCES EnemyStatus(EnemyID)," +
                     "CONSTRAINT FK_Waves FOREIGN KEY (WaveID) REFERENCES Waves(WaveID));");
 
+            //Add command create table Player
+            createTableDic.Add("Player",
+                    "CREATE TABLE IF NOT EXISTS Player (" +
+                    "PlayerID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "Health int NOT NULL," +
+                    "Speed float NOT NULL);");
+
             CreateTable(createTableDic);    
         }
     }
@@ -146,6 +153,13 @@ public class ManageData
             //wave 5
             "INSERT INTO WaveSpawns (WaveID, EnemyID, SpawnCount, SpawnInterval) " +
             "VALUES (4, 4, 150, 1)",
+        });
+
+        //Add command insert table Player
+        insertTableDic.Add("Player", new List<string>()
+        {
+            "INSERT INTO Player (Health, Speed) " +
+            "VALUES (100, 7.5)",
         });
 
         InsertTable(insertTableDic);
